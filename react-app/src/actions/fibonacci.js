@@ -8,11 +8,8 @@ export function calculate(num){
         dispatch(onCalculate());
         try {
             const url =`http://localhost:5050/api/fibonacci/${num}`
-            const req = await axios.get(url, {
-                'Access-Control-Allow-Origin':'*',
-                'Access-Control-Allow-Methods': 'GET'
-            });
-            dispatch(onSuccess(req.result));
+            const req = await axios.get(url);
+            dispatch(onSuccess(req.data.result));
         } catch (error) {
             console.error(error);
             dispatch(onError(error));
