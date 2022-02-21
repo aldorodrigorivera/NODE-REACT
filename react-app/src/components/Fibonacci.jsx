@@ -16,8 +16,16 @@ export default function Fibonacci() {
             alert('Please enter a positive value');
             return;
         }
-        dispatch(calculate(num));
-        changeNum(0);
+        start(0);
+    }
+    function start(base) {
+        if(base < num){
+            setTimeout(() => {
+                dispatch(calculate(base))
+                base++;
+                start(base);
+              }, 3000);
+        }
     }
     return <div>
         <p>Calculate Fibonacci!</p>
